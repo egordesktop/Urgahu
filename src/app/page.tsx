@@ -1,103 +1,144 @@
-import Image from "next/image";
+import Link from 'next/link'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import Sidebar from '@/components/Sidebar'
+import NewsCard from '@/components/NewsCard'
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const newsItems = [
+    {
+      title: 'Информация от прокуратуры о зачислении на обучение детей участников специальной военной операции',
+      href: '/news/2025/informaciya-voennoi-prokuratury',
+      date: '2025-01-15',
+      category: 'Важно'
+    },
+    {
+      title: 'Памятка для абитуриента-целевика',
+      href: '/applicant/celevoi-priem/pamyatka.pdf',
+      date: '2025-01-14',
+      category: 'Абитуриентам'
+    },
+    {
+      title: 'Презентационные материалы для абитуриентов',
+      href: '//minobrnauki.gov.ru/action/targeted_training/',
+      date: '2025-01-13'
+    },
+    {
+      title: 'Сайт ЕКЦ «Приём в вуз»',
+      href: '//priemvuz.ru/',
+      date: '2025-01-12'
+    },
+    {
+      title: 'Не памятка о мерах социальной поддержки молодым семьям с детьми.',
+      href: '/news/2025/pamyatka.pdf',
+      date: '2025-01-11',
+      category: 'Студентам'
+    },
+    {
+      title: 'Рекомендации о возможностях построения карьеры для молодежи на государственной гражданской службе, проводимых государственными органах практиках и стажировках, а также информация о Портале государственной гражданской службы.',
+      href: '/news/2025/gossluzhba.pdf',
+      date: '2025-01-10',
+      category: 'Карьера'
+    },
+    {
+      title: 'УрГАХУ завершил зачисление абитуриентов на бюджетные места бакалавриата и специалитета.',
+      href: '/news/2025/promezhutochnye-itogi-priemnoi-kampamm',
+      date: '2025-01-09',
+      category: 'Приемная кампания'
+    },
+    {
+      title: 'Представители более 10 стран станут участниками Международного фестиваля креативных индустрий.',
+      href: '/news/2025/festival-kreativnyh-industrii',
+      date: '2025-01-08',
+      category: 'Международное сотрудничество'
+    },
+    {
+      title: 'Открыт набор на программы профессиональной переподготовки в сфере креативных индустрий',
+      href: '/news/2025/idoki-nabor',
+      date: '2025-01-07',
+      category: 'Дополнительное образование'
+    },
+    {
+      title: 'Начало проведения конкурсных отборов IX сезона ежегодной Всероссийской олимпиады студентов «Я — профессионал»',
+      href: '/news/2025/ya-2014-professional',
+      date: '2025-01-06',
+      category: 'Олимпиады'
+    },
+    {
+      title: 'Открывается приём заявок на участие в V Международном культурно-образовательном чемпионате «История будущего».',
+      href: '/news/2025/istoriya-buduschego-2013-2025',
+      date: '2025-01-05',
+      category: 'Конкурсы'
+    },
+    {
+      title: 'Студенческий журнал «Архипелаг» №3/2025',
+      href: '/news/2025/archipelag_july2025.pdf',
+      date: '2025-01-04',
+      category: 'Студенческая жизнь'
+    },
+    {
+      title: 'Всероссийская программа сопровождения молодых государственных и муниципальных служащих «ГосСтарт».',
+      href: '/news/2025/gosstart-stazhirovki',
+      date: '2025-01-03',
+      category: 'Стажировки'
+    },
+    {
+      title: 'Проектная графика как основа индустриального дизайна и проектирования 3D-интерфейсов.',
+      href: '/news/2025/proektnaya-grafika',
+      date: '2025-01-02',
+      category: 'Наука'
+    }
+  ]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      
+      <main className="container mx-auto px-4 py-8">
+        <div className="flex gap-8">
+          {/* Main Content */}
+          <div className="flex-1">
+            {/* News Section */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6">
+              <h2 className="text-xl font-semibold text-gray-800 mb-6">Новости университета</h2>
+              
+              <div className="space-y-2">
+                {newsItems.map((item, index) => (
+                  <NewsCard
+                    key={index}
+                    title={item.title}
+                    href={item.href}
+                    date={item.date}
+                    category={item.category}
+                  />
+                ))}
+              </div>
+              
+              <div className="mt-6 pt-4 border-t border-gray-200">
+                <Link
+                  href="/news"
+                  className="text-blue-600 hover:text-blue-800 font-medium"
+                >
+                  {'>>'} Все новости
+                </Link>
+              </div>
+            </div>
+
+            {/* Additional Info */}
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <h3 className="font-medium text-blue-800 mb-2">Приемная комиссия</h3>
+              <p className="text-sm text-blue-700">
+                Телефоны ЕКЦ «Приём в вуз» – 8 (800) 301-44-55 (для звонков по России), 8 (495) 122-22-68 (для звонков из-за рубежа).
+              </p>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <Sidebar />
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <Footer />
     </div>
-  );
+  )
 }
